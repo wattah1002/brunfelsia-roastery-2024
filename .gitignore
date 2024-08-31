@@ -1,0 +1,38 @@
+# OS生成ファイル
+**/.DS_Store
+Thumbs.db
+
+# エディタ/IDE固有のファイル
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ログファイル
+*.log
+
+# 一時ファイル
+*.tmp
+*.swp
+*~
+
+# 依存関係ディレクトリ
+node_modules/
+vendor/
+
+# ビルド出力
+dist/
+build/
+
+# 環境設定ファイル
+.env
+.env.local
+.env.*.local
+
+# キャッシュディレクトリ
+.cache/
+
+# その他
+*.bak
+*.zip
+*.tar.gz
