@@ -3,6 +3,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    padding-bottom: 100px; /* フッター分の余白を追加 */
 }
 
 header {
@@ -22,7 +23,29 @@ header {
 }
 
 nav {
-    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.hamburger-menu span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 4px;
+    border-radius: 5px;
 }
 
 nav ul {
@@ -82,6 +105,19 @@ footer {
     object-fit: cover;
 }
 
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-align: left; /* テキストを左揃えに */
+    line-height: 1.5; /* 行間を調整 */
+}
+
 @media (orientation: landscape) {
     .video-container video {
         width: 100%;
@@ -94,4 +130,82 @@ footer {
         width: auto;
         height: 100%;
     }
+}
+
+/* スマホサイズのスタイル */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #000;
+        padding: 10px 0; /* 余白を追加 */
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+        z-index: 1000;
+    }
+
+    .nav-links li {
+        text-align: right; /* 文字を右寄せ */
+        padding: 15px 20px; /* 余白を追加 */
+        width: auto; /* 幅を文字サイズ＋余白に */
+    }
+
+    .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        justify-content: flex-end; /* メニューを右寄せ */
+        width: 100%;
+    }
+}
+
+/* フォームのスタイル */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #fff; /* 背景色を白に */
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000; /* 枠線を黒に */
+    border-radius: 5px;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #333;
 }

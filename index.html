@@ -11,11 +11,16 @@
         <div class="header-content">
             <img src="assets/images/logo_white.webp" alt="ロゴ" class="logo">
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#access">Access</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
         </div>
     </header>
@@ -25,6 +30,16 @@
             <source src="assets/videos/kv.mp4" type="video/mp4">
             お使いのブラウザは動画タグをサポートしていません。
         </video>
+        <div class="overlay-text">
+            <p style="font-size: 20px; color: #acacac; font-weight: 300;">
+                一杯のコーヒーからは<br>
+                一つの旅が香らなくてはならない<br><br>
+                そう思わせてくれる１杯を提供するのは<br>
+                横浜市⻘葉台のロースタリー<br><br>
+                ⼝に含んだ瞬間に気づく<br>
+                「ナニカガチガウ」
+            </p>
+        </div>
     </div>
 
     <main>
@@ -38,7 +53,17 @@
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <p>ここに連絡先情報を追加します。</p>
+            <p>ご連絡先: info@brunfelsia-roastery.jp</p>
+            <p>以下の入力フォームもご利用いただけます。</p>
+            <form id="contact-form" action="https://formspree.io/f/xanwkwwp" method="POST">
+                <label for="email">メールアドレス:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">お問い合わせ内容:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">送信</button>
+            </form>
         </section>
     </main>
 

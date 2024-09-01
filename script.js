@@ -9,7 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = link.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
             targetElement.scrollIntoView({ behavior: 'smooth' });
+
+            // メニューリンクをクリックしたらメニューを閉じる
+            const navLinksContainer = document.querySelector('.nav-links');
+            navLinksContainer.classList.remove('nav-active');
         });
+    });
+
+    // ハンバーガーメニューの開閉
+    const menuToggle = document.querySelector('.hamburger-menu');
+    const navLinksContainer = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+        navLinksContainer.classList.toggle('nav-active');
     });
 
     // ここに追加の機能を実装できます
