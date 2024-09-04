@@ -12,8 +12,9 @@
             <img src="assets/images/logo_white.webp" alt="ロゴ" class="logo">
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#access">Access</a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li><a href="#promise">We promise</a></li>
+                    <li><a href="#company">Company</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger-menu">
@@ -43,27 +44,83 @@
     </div>
 
     <main>
-        <section id="about">
-            <h2>About</h2>
-            <p>ここに概要を追加します。</p>
+        <section id="about" class="about-section">
+            <h2>About us</h2>
+            <div class="about-content">
+                <div class="profile-section">
+                    <div class="profile">
+                        <p class="position">代表取締役</p>
+                        <p class="name">
+                            <span class="ja">伴 憲作</span><br class="small-break">
+                            <span class="en">Kensaku Ban</span>
+                        </p>
+                    </div>
+                    <p class="profile-text">
+                        幼少期を英仏で過ごし、国際的な視野を培う。偶然出会ったラテアートに魅了され、わずか3ヶ月の独学でCoffeeFest世界大会に最年少出場を果たす。<br><br>
+                        
+                        スペシャリティコーヒーの魅力に惹かれ、SCA（スペシャリティーコーヒー国際協会）に所属。国際的な認定資格を次々と取得し、インドネシアでの品質向上プログラムにも参加。<br><br>
+                        
+                        ラテアート国際大会の審査員長を務めるほか、中東諸国でバリスタ講習を行うなど、グローバルにコーヒー文化の普及に尽力。日本では、SCAクラスの通訳や各種コーヒー教室を開催し、業界の発展に貢献。<br><br>
+                        
+                        2017年、Paddle&Brew株式会社を設立。横浜市青葉区にスペシャリティコーヒー専門焙煎所をオープンし、「スペシャリティコーヒーを日常に」をモットーに、企業向け焙煎豆の卸売や、コーヒー導入を検討する方々への総合的なサポートを提供している。
+                    </p>
+                </div>
+                <div class="image-section">
+                    <div class="image-mask">
+                        <img src="assets/images/vansan.jpg" alt="代表者の写真" class="profile-image">
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="access">
-            <h2>Access</h2>
-            <p>ここにアクセス情報を追加します。</p>
+        <section id="promise" class="promise-section">
+            <div class="promise-content">
+                <div class="image-section">
+                    <div class="image-mask">
+                        <img src="assets/images/have_cup.jpg" alt="We promiseイメージ" class="promise-image">
+                    </div>
+                </div>
+                <div class="text-section">
+                    <h2>We promise</h2>
+                    <p class="promise-text">
+                        『一杯のコーヒーからは、一つの 旅 が薫らなくてはならない』と私がお世話になっている農園の方に言われたことがあります。<br><br>
+                        口に含むコーヒーの芳ばしい香りと奥深い味が、生産された国 / 風土・環境 / 携わった人々 / 繊細な焙煎 まで全てを感じ取ってもらえるような一杯を飲んで頂きたい。<br><br>
+                        私たちは、そんなスペシャリティコーヒーをご提供するために、3つの決まりを守っております。<br><br>
+                        1. 焙煎はご注文をいただいてから行う<br>
+                        2. 手作業によるピッキング<br>
+                        3. クオリティコントロールのためのカッピング<br><br>
+                        世界各地の生産者から丁寧かつ慎重に選び抜かれた最高品質の生豆のみを扱い、さらに手作業によるピッキングを行うことでより質を高めています。<br><br>
+                        焙煎機は日本では珍しいオランダ GIESEN 社の W6A 焙煎機、IKAWA 社のサンプル焙煎機 を使用し、これまで培った知識と各種抽出器具、センサリーキットも完備した弊社焙煎所 で日々増える経験を生かした焙煎は豆のもつ魅力と特徴を最大限に引き出します。</p>
+                </div>
+            </div>
+        </section>
+        <section id="company">
+            <h2>会社概要</h2>
+            <p class="company-name">Paddle&Brew 株式会社</p>
+            <div class="company-info">
+                <div class="office-info">
+                    <h3>Head Office</h3>
+                    <p>〒154-0001 東京都世田谷区池尻 2-35-9 703</p>
+                </div>
+                <div class="office-info">
+                    <h3>Roastery</h3>
+                    <p>〒227-0038 神奈川県横浜市青葉区奈良 1-22-8 garage, 1F</p>
+                </div>
+            </div>
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <p>ご連絡先: info@brunfelsia-roastery.jp</p>
-            <p>以下の入力フォームもご利用いただけます。</p>
+            <p>TEL 03-6450-7667</p>
+            <p>MAIL brunfelsia.roastery@gmail.com</p>
+            <!-- <p>以下の入力フォームもご利用いただけます。</p>
             <form id="contact-form" action="https://formspree.io/f/xanwkwwp" method="POST">
-                <label for="email">メールアドレス:</label>
+                <label for="email">メーアドレス:</label>
                 <input type="email" id="email" name="email" required>
                 
                 <label for="message">お問い合わせ内容:</label>
                 <textarea id="message" name="message" required></textarea>
                 
                 <button type="submit">送信</button>
-            </form>
+            </form> -->
         </section>
     </main>
 

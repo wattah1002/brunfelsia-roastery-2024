@@ -209,3 +209,322 @@ form button {
 form button:hover {
     background-color: #333;
 }
+
+.company-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+.about-section {
+    padding: 2rem;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.position {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.name {
+    margin: 0;
+}
+
+.name .ja {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0; /* 余白をなくしました */
+    line-height: 1.2; /* 行間を狭めました */
+}
+
+.name .en {
+    font-size: 16px;
+    color: #888;
+    line-height: 1.2; /* 行間を狭めました */
+}
+
+.profile-text {
+    line-height: 1.6;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    margin-top: 20px; /* 上部の余白を追加 */
+}
+
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row;
+        align-items: stretch; /* 子要素を親要素の高さに合わせる */
+    }
+
+    .profile-section {
+        flex: 1;
+        margin-right: 30px;
+    }
+
+    .image-section {
+        flex: 1;
+        display: flex; /* Flexboxを使用 */
+        align-items: stretch; /* 子要素を親要素の高さに合わせる */
+    }
+
+    .image-mask {
+        width: 100%;
+        padding-top: 0; /* アスペクト比の制御を解除 */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .profile-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 767px) {
+    .image-mask {
+        padding-top: 56.25%; /* スマホサイズでは16:9のアスペクト比に変更 */
+    }
+}
+
+.small-break {
+    display: block;
+    height: 9px; /* brタグの高さを9pxに設定 */
+    line-height: 9px; /* line-heightも9pxに設定 */
+    content: ""; /* 空のコンテンツを設定 */
+}
+
+.image-section {
+    width: 100%;
+    max-width: 600px; /* 必要に応じて調整 */
+    margin: 0 auto;
+}
+
+.image-mask {
+    width: 100%;
+    padding-top: 100%; /* アスペクト比1:1の正方形マスク */
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 767px) {
+    .image-mask {
+        padding-top: 56.25%; /* スマホサイズでは16:9のアスペクト比に変更 */
+    }
+}
+
+.promise-section {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 0;
+    width: 100vw; /* ビューポートの幅いっぱいに設定 */
+    margin-left: calc(-50vw + 50%); /* 左右の余白を削除 */
+    box-sizing: border-box; /* パディングを幅に含める */
+}
+
+.promise-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem; /* 左右のパディングを追加 */
+}
+
+.promise-content .image-section {
+    flex: 1;
+}
+
+.promise-content .text-section {
+    flex: 1;
+}
+
+.promise-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.promise-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.promise-section .image-mask {
+    padding-top: 0; /* 上部パディングを削除 */
+    /* 必要に応じて他のスタイルを調整 */
+}
+
+/* about-sectionとpromise-sectionの共通スタイル */
+.about-section,
+.promise-section {
+    padding: 2rem;
+}
+
+/* スマホサイズのスタイル（デフォルト） */
+.about-section .about-content,
+.promise-section .promise-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.promise-section .text-section {
+    margin-bottom: 0; /* 下の余白を削除 */
+}
+
+.about-section .image-mask,
+.promise-section .image-mask {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9のアスペクト比 */
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section .profile-image,
+.promise-section .promise-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* PCサイズのスタイル */
+@media (min-width: 768px) {
+    .about-section .about-content,
+    .promise-section .promise-content {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .about-section .profile-section,
+    .promise-section .text-section {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .about-section .image-section,
+    .promise-section .image-section {
+        flex: 1;
+        display: flex;
+        align-items: stretch;
+    }
+
+    .about-section .image-mask,
+    .promise-section .image-mask {
+        flex: 1;
+        position: relative;
+        padding-top: 0;
+    }
+
+    .about-section .profile-image,
+    .promise-section .promise-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .about-section .image-section {
+        margin-left: 2rem;
+    }
+
+    .promise-section .image-section {
+        margin-right: 2rem;
+    }
+}
+
+/* スマホサイズのスタイル */
+@media (max-width: 767px) {
+    .about-section .about-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .promise-section .promise-content {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .about-section .profile-section,
+    .promise-section .text-section,
+    .about-section .image-section,
+    .promise-section .image-section {
+        width: 100%;
+        max-width: 100%; /* PCサイズのスタイルを上書き */
+        margin-left: 0; /* PCサイズのスタイルを上書き */
+        height: auto;
+    }
+
+    .about-section .image-section,
+    .promise-section .image-section {
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9のアスペクト比を維持 */
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+
+    .about-section .image-mask,
+    .promise-section .image-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding-top: 0;
+    }
+
+    .about-section .profile-image,
+    .promise-section .promise-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .promise-section {
+        background-color: #000;
+        color: #fff;
+        padding: 2rem 4rem;
+    }
+
+    .promise-section .promise-content {
+        width: 100%;
+        padding: 0;
+    }
+}
