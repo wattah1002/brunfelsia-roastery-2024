@@ -13,30 +13,82 @@ document.addEventListener('DOMContentLoaded', () => {
             // メニューリンクをクリックしたらメニューを閉じる
             const navLinksContainer = document.querySelector('.nav-links');
             navLinksContainer.classList.remove('nav-active');
+            menuToggle.classList.remove('active');
+            body.classList.remove('menu-open');
         });
     });
 
     // ハンバーガーメニューの開閉
     const menuToggle = document.querySelector('.hamburger-menu');
     const navLinksContainer = document.querySelector('.nav-links');
+    const body = document.body;
+
     menuToggle.addEventListener('click', () => {
+        // メニューの表示/非表示を切り替え
         navLinksContainer.classList.toggle('nav-active');
+
+        // ハンバーガーアイコンのアニメーション
+        menuToggle.classList.toggle('active');
+
+        // ボディのスクロールを制御
+        body.classList.toggle('menu-open');
     });
 
-    // ここに追加の機能を実装できます
+    // メニュー外クリックでメニューを閉じる
+    document.addEventListener('click', (e) => {
+        if (!navLinksContainer.contains(e.target) && !menuToggle.contains(e.target)) {
+            navLinksContainer.classList.remove('nav-active');
+            menuToggle.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
 
-    function adjustVideoSize() {
-        const header = document.getElementById('header');
-        const videoContainer = document.getElementById('video-container');
+    function adjustHeroSize() {
+        const heroContainer = document.getElementById('hero-container');
         const windowHeight = window.innerHeight;
-        const headerHeight = header.offsetHeight;
         
-        videoContainer.style.height = `${windowHeight - headerHeight}px`;
+        heroContainer.style.height = `${windowHeight}px`;
     }
 
     // ページ読み込み時に実行
-    window.addEventListener('load', adjustVideoSize);
+    window.addEventListener('load', adjustHeroSize);
 
     // ウィンドウサイズ変更時に実行
-    window.addEventListener('resize', adjustVideoSize);
+    window.addEventListener('resize', adjustHeroSize);
+
+    // フォームの入力チェックと送信ボタンの制御
+    const contactForm = document.getElementById('contact-form');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+
+    function validateForm() {
+        if (emailInput.value.trim() !== '' && messageInput.value.trim() !== '') {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
+    emailInput.addEventListener('input', validateForm);
+    messageInput.addEventListener('input', validateForm);
+
+    // 初期状態で送信ボタンを非アクティブにする
+    validateForm();
+
+    function setupImageSlideshow() {
+        const images = document.querySelectorAll('.hero-image');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 5000);
+    }
+
+    // DOMContentLoadedイベントリスナー内で以下の行を追加
+    setupImageSlideshow();
 });
