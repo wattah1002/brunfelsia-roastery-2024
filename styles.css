@@ -21,6 +21,7 @@ header {
     left: 0; /* 左端に配置 */
     width: 100%; /* 幅を100%に設定 */
     z-index: 1000; /* 他の要素より前面に表示 */
+    box-sizing: border-box;
 }
 
 .header-content {
@@ -123,13 +124,6 @@ footer {
 .logo {
     height: 30px;
     width: auto;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
 }
 
 .video-container {
