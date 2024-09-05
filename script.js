@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     emailInput.addEventListener('input', validateForm);
     messageInput.addEventListener('input', validateForm);
 
-    // 初期状態で送信ボタンを非アクティブにする
-    validateForm();
+    // 初期状態で送信ボタンを無効にする
+    submitButton.disabled = true;
 
     function setupImageSlideshow() {
         const images = document.querySelectorAll('.hero-image');
