@@ -586,7 +586,6 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: flex-end;
-        padding-bottom: 20vh;
     }
 
     .hero-image {
