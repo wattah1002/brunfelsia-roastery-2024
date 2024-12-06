@@ -9,11 +9,15 @@
 <body>
     <header id="header">
         <div class="header-content">
-            <img src="assets/images/logo.webp" alt="ロゴ" class="logo">
+            <div class="badge">
+                <span class="badge-text">LIMITED RESERVATION | حجز محدود | OCCASIONALLY OPEN | مفتوح أحيانا | LIMITED RESERVATION | حجز محدود | OCCASIONALLY OPEN | مفتوح أحيانا | </span>
+            </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#about">About us</a></li>
-                    <li><a href="#promise">We promise</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#scene">Scene</a></li>
+                    <li><a href="#promise">Promise</a></li>
                     <li><a href="#company">Company</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -28,21 +32,7 @@
 
     <div id="hero-container" class="hero-container">
         <div class="hero-content">
-            <div class="overlay-text">
-                <p>
-                    一杯のコーヒーからは<br>
-                    一つの旅が香らなくてはならない<br><br>
-                    そう思わせてくれる１杯を提供するのは<br>
-                    横浜市⻘葉台のロースタリー<br><br>
-                    ⼝に含んだ瞬間に気づく<br>
-                    「ナニカガチガウ」
-                </p>
-            </div>
-            <div class="hero-image-container">
-                <img src="assets/images/kv_marshell.jpg" alt="メイン画像1" class="hero-image active">
-                <img src="assets/images/kv_drop.jpg" alt="メイン画像2" class="hero-image">
-                <img src="assets/images/kv_many_cups.jpg" alt="メイン画像3" class="hero-image">
-            </div>
+            <img src="assets/images/logo.webp" alt="ロゴ" class="hero-logo">
         </div>
     </div>
 
@@ -75,13 +65,19 @@
                 </div>
             </div>
         </section>
+
+        <!-- 新しく追加するsceneセクション -->
+        <section id="scene" class="scene-section">
+            <h2>Scene</h2>
+            <div class="hero-image-container">
+                <img src="assets/images/kv_marshell.jpg" alt="メイン画像1" class="hero-image active">
+                <img src="assets/images/kv_drop.jpg" alt="メイン画像2" class="hero-image">
+                <img src="assets/images/kv_many_cups.jpg" alt="メイン画像3" class="hero-image">
+            </div>
+        </section>
+
         <section id="promise" class="promise-section">
             <div class="promise-content">
-                <div class="image-section">
-                    <div class="image-mask">
-                        <img src="assets/images/have_cup.jpg" alt="We promiseイメージ" class="promise-image">
-                    </div>
-                </div>
                 <div class="text-section">
                     <h2>We promise</h2>
                     <p class="promise-text">
@@ -113,7 +109,7 @@
                 </div>
                 <div class="image-section">
                     <div class="image-mask">
-                        <img src="assets/images/kv_shop.png" alt="会社概要イメージ" class="company-image">
+                        <img src="assets/images/kv_shop.png" alt="会社概要イメッジ" class="company-image">
                     </div>
                 </div>
             </div>
@@ -121,6 +117,13 @@
         <section id="contact" class="contact-section">
             <div class="contact-content">
                 <div class="form-section">
+                    <div class="text-section">
+                        <h2>Contact</h2>
+                        <div class="contact-info">
+                            <p><strong>TEL:</strong> 03-6450-7667</p>
+                            <p><strong>MAIL:</strong> brunfelsia.roastery@gmail.com</p>
+                        </div>
+                    </div>
                     <form id="contact-form" action="https://formspree.io/f/xanwkwwp" method="POST">
                         <label for="email">メールアドレス: <span class="required">*</span></label>
                         <input type="email" id="email" name="email" required>
@@ -130,13 +133,6 @@
                         
                         <button type="submit">送信</button>
                     </form>
-                </div>
-                <div class="text-section">
-                    <h2>Contact</h2>
-                    <div class="contact-info">
-                        <p><strong>TEL:</strong> 03-6450-7667</p>
-                        <p><strong>MAIL:</strong> brunfelsia.roastery@gmail.com</p>
-                    </div>
                 </div>
             </div>
         </section>

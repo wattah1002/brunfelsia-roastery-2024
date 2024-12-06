@@ -63,11 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = contactForm.querySelector('button[type="submit"]');
 
     function validateForm() {
-        if (emailInput.value.trim() !== '' && messageInput.value.trim() !== '') {
-            submitButton.disabled = false;
-        } else {
-            submitButton.disabled = true;
-        }
+        const isValid = emailInput.value.trim() !== '' && messageInput.value.trim() !== '';
+        submitButton.disabled = !isValid;
     }
 
     emailInput.addEventListener('input', validateForm);
@@ -91,4 +88,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // DOMContentLoadedイベントリスナー内で以下の行を追加
     setupImageSlideshow();
+
+    // バッジテキストのアニメーション
+    function setupBadgeAnimation() {
+        const badge = document.querySelector('.badge');
+        const badgeText = document.querySelector('.badge-text');
+        
+        // テキストを複製して2回連結する
+        badgeText.textContent = badgeText.textContent.repeat(2);
+        
+        // テキストの幅を計算
+        const textWidth = badgeText.offsetWidth / 2; // 2で割るのは、テキストを2回繰り返したため
+        
+        // バッジの幅を取得
+        const badgeWidth = badge.offsetWidth;
+        
+        // アニメーションの継続時間を計算（速度を調整するには、この値を変更します）
+        const duration = textWidth / 50; // 50はピクセル/秒の速度です
+
+        // CSSアニメーションを動的に設定
+        badgeText.style.animationDuration = `${duration}s`;
+        badgeText.style.animationTimingFunction = 'linear';
+        badgeText.style.animationIterationCount = 'infinite';
+        badgeText.style.animationName = 'moveText';
+        
+        // キーフレームアニメーションを動的に作成
+        const styleSheet = document.styleSheets[0];
+        const keyframes = `
+            @keyframes moveText {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${textWidth}px); }
+            }
+        `;
+        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    }
+
+    // ページ読み込み時にアニメーションをセットアップ
+    setupBadgeAnimation();
+
+    // ウィンドウリサイズ時にアニメーションを再セットアップ
+    window.addEventListener('resize', setupBadgeAnimation);
+
+    // 既存のコードの後に以下を追加
+
+    function setupFadeInEffect() {
+        const sections = document.querySelectorAll('section');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            section.classList.add('fade-out');
+            observer.observe(section);
+        });
+    }
+
+    // DOMContentLoadedイベントリスナー内で以下の行を追加
+    setupFadeInEffect();
 });
