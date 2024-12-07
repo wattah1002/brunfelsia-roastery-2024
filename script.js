@@ -94,33 +94,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const badge = document.querySelector('.badge');
         const badgeText = document.querySelector('.badge-text');
         
-        // テキストを複製して2回連結する
+        if (!badge || !badgeText) return;
+
+        // テキストを複製
         badgeText.textContent = badgeText.textContent.repeat(2);
         
-        // テキストの幅を計算
-        const textWidth = badgeText.offsetWidth / 2; // 2で割るのは、テキストを2回繰り返したため
-        
-        // バッジの幅を取得
-        const badgeWidth = badge.offsetWidth;
-        
-        // アニメーションの継続時間を計算（速度を調整するには、この値を変更します）
-        const duration = textWidth / 50; // 50はピクセル/秒の速度です
+        // キャッシュしてパフォーマンスを向上
+        const textWidth = badgeText.offsetWidth / 2;
+        const duration = textWidth / 50;
 
-        // CSSアニメーションを動的に設定
-        badgeText.style.animationDuration = `${duration}s`;
-        badgeText.style.animationTimingFunction = 'linear';
-        badgeText.style.animationIterationCount = 'infinite';
-        badgeText.style.animationName = 'moveText';
+        // アニメーションの設定を最適化
+        badgeText.style.cssText = `
+            animation: moveText ${duration}s linear infinite;
+            transform: translateZ(0); // GPUアクセラレーションを有効化
+        `;
         
-        // キーフレームアニメーションを動的に作成
-        const styleSheet = document.styleSheets[0];
+        // キーフレームの追加を最適化
         const keyframes = `
             @keyframes moveText {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-${textWidth}px); }
+                0% { transform: translateX(0) translateZ(0); }
+                100% { transform: translateX(-${textWidth}px) translateZ(0); }
             }
         `;
-        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+        
+        // 既存のスタイルシートにキーフレームを追加
+        const styleSheet = document.styleSheets[0];
+        try {
+            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+        } catch (e) {
+            console.warn('アニメーションの追加に失敗しました:', e);
+        }
     }
 
     // ページ読み込み時にアニメーションをセットアップ
@@ -136,19 +139,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const options = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.1,
+            // パフォーマンス最適化のためにオプションを追加
+            trackVisibility: true,
+            delay: 100
         };
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
+        const observer = new IntersectionObserver((entries) => {
+            // requestAnimationFrameを使用してアニメーションを最適化
+            requestAnimationFrame(() => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        // 一度表示されたら監視を解除
+                        observer.unobserve(entry.target);
+                    }
+                });
             });
         }, options);
 
         sections.forEach(section => {
+            // 初期状態で非表示
             section.classList.add('fade-out');
             observer.observe(section);
         });

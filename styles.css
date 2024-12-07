@@ -945,6 +945,7 @@ form::after {
     white-space: nowrap;
     position: absolute;
     left: 0;
+    will-change: transform;
     /* top: 50%; と transform: translateY(-50%); を削除 */
 }
 
@@ -968,6 +969,7 @@ form::after {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+    will-change: opacity, transform;
 }
 
 .fade-in {
