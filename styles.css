@@ -1035,3 +1035,68 @@ form::after {
 
     /* 既存のスタイル... */
 }
+
+/* 初期状態で要素を非表示に */
+.header-hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.footer-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-logo-hidden {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* フェードインアニメーション */
+.header-fade-in {
+    animation: headerFadeIn 1s ease forwards;
+    animation-delay: 2s; /* ロゴアニメーション後に表示 */
+}
+
+.footer-fade-in {
+    animation: footerFadeIn 1s ease forwards;
+    animation-delay: 2s; /* ロゴアニメーション後に表示 */
+}
+
+.hero-logo-fade-in {
+    animation: logoFadeIn 1.5s ease forwards;
+    animation-delay: 0.5s; /* 背景表示後にアニメーション開始 */
+}
+
+@keyframes headerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes footerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

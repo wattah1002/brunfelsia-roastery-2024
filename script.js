@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 初期アニメーションのセットアップ
+    const header = document.getElementById('header');
+    const footer = document.querySelector('footer');
+    const heroLogo = document.querySelector('.hero-logo');
+
+    // 初期状態で要素を非表示に
+    header.classList.add('header-hidden');
+    footer.classList.add('footer-hidden');
+    heroLogo.classList.add('hero-logo-hidden');
+
+    // ページ読み込み完了時にアニメーションを開始
+    window.addEventListener('load', () => {
+        // 要素を表示
+        header.classList.add('header-fade-in');
+        footer.classList.add('footer-fade-in');
+        heroLogo.classList.add('hero-logo-fade-in');
+    });
+
     console.log('ページが読み込まれました');
 
     // ナビゲーションのスムーズスクロール
