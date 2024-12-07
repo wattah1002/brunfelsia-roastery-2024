@@ -43,18 +43,71 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function adjustHeroSize() {
-        const heroContainer = document.getElementById('hero-container');
-        const windowHeight = window.innerHeight;
-        
-        heroContainer.style.height = `${windowHeight}px`;
+    // デバウンス関数を追加
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
+
+    // ヒーローサイズの調整を最適化
+    const adjustHeroSize = debounce(() => {
+        const heroContainer = document.getElementById('hero-container');
+        if (heroContainer) {
+            heroContainer.style.height = `${window.innerHeight}px`;
+        }
+    }, 250);
+
+    // バッジアニメーションの最適化
+    const setupBadgeAnimation = debounce(() => {
+        const badge = document.querySelector('.badge');
+        const badgeText = document.querySelector('.badge-text');
+        
+        if (!badge || !badgeText) return;
+
+        // キャッシュしてパフォーマンスを向上
+        const textWidth = badgeText.offsetWidth;
+        const duration = textWidth / 50;
+
+        // アニメーションのキーフレームを動的に生成
+        const keyframes = `
+            @keyframes moveText {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+        `;
+
+        // 既存のスタイルシートを確認
+        let styleSheet = document.querySelector('style#badge-animation');
+        if (!styleSheet) {
+            styleSheet = document.createElement('style');
+            styleSheet.id = 'badge-animation';
+            document.head.appendChild(styleSheet);
+        }
+
+        // アニメーションスタイルを更新
+        styleSheet.textContent = keyframes;
+        badgeText.style.animation = `moveText ${duration}s linear infinite`;
+    }, 250);
+
+    // イベントリスナーの設定
+    window.addEventListener('resize', () => {
+        adjustHeroSize();
+        setupBadgeAnimation();
+    });
 
     // ページ読み込み時に実行
     window.addEventListener('load', adjustHeroSize);
-
-    // ウィンドウサイズ変更時に実行
-    window.addEventListener('resize', adjustHeroSize);
 
     // フォームの入力チェックと送信ボタンの制御
     const contactForm = document.getElementById('contact-form');
@@ -88,43 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // DOMContentLoadedイベントリスナー内で以下の行を追加
     setupImageSlideshow();
-
-    // バッジテキストのアニメーション
-    function setupBadgeAnimation() {
-        const badge = document.querySelector('.badge');
-        const badgeText = document.querySelector('.badge-text');
-        
-        if (!badge || !badgeText) return;
-
-        // テキストを複製
-        badgeText.textContent = badgeText.textContent.repeat(2);
-        
-        // キャッシュしてパフォーマンスを向上
-        const textWidth = badgeText.offsetWidth / 2;
-        const duration = textWidth / 50;
-
-        // アニメーションの設定を最適化
-        badgeText.style.cssText = `
-            animation: moveText ${duration}s linear infinite;
-            transform: translateZ(0); // GPUアクセラレーションを有効化
-        `;
-        
-        // キーフレームの追加を最適化
-        const keyframes = `
-            @keyframes moveText {
-                0% { transform: translateX(0) translateZ(0); }
-                100% { transform: translateX(-${textWidth}px) translateZ(0); }
-            }
-        `;
-        
-        // 既存のスタイルシートにキーフレームを追加
-        const styleSheet = document.styleSheets[0];
-        try {
-            styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
-        } catch (e) {
-            console.warn('アニメーションの追加に失敗しました:', e);
-        }
-    }
 
     // ページ読み込み時にアニメーションをセットアップ
     setupBadgeAnimation();
