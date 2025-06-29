@@ -325,7 +325,7 @@ footer {
 
 @media (max-width: 767px) {
     .image-mask {
-        padding-top: 56.25%; /* スマホサイズでは16:9のアスクト比に変更 */
+        padding-top: 56.25%; /* スマホサイズでは16:9のアスペクト比に変更 */
     }
 }
 
@@ -709,7 +709,7 @@ footer p {
 @media (min-width: 768px) {
     .company-content {
         flex-direction: row;
-        align-items: flex-start; /* 上寄せに変更 */
+        align-items: stretch; /* ストレッチに変更して高さを揃える */
         gap: 2rem;
     }
 
@@ -722,11 +722,26 @@ footer p {
         flex: 1;
         height: auto;
         padding-bottom: 0;
+        display: flex;
+        align-items: center; /* 画像を中央に配置 */
     }
 
     .company-section .image-mask {
         position: relative;
-        padding-top: 75%;
+        width: 100%;
+        height: 100%;
+        min-height: 300px; /* 最小高さを設定 */
+        overflow: hidden;
+    }
+    
+    .company-section .company-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 }
 
@@ -1033,7 +1048,9 @@ form::after {
         margin-bottom: 0;
     }
 
-    /* 既存のスタイル... */
+    .company-info {
+        margin-bottom: 2rem; /* スマホサイズでの下マージンを追加 */
+    }
 }
 
 /* 初期状態で要素を非表示に */
@@ -1098,5 +1115,142 @@ form::after {
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+.opening-hours p {
+    margin: 0.2em 0; /* 基本の上下マージン */
+}
+
+.opening-hours {
+    margin-top: 3em;
+}
+
+.opening-hours h3 {
+    margin-bottom: 0.1em;
+}
+
+.opening-hours p:first-of-type {
+    color: rgba(0, 0, 0, 0.3); /* 黒で、不透明度をちょっと下げて */
+}
+
+@media screen and (max-width: 768px) {
+    .company-info {
+        margin-bottom: 2rem;
+    }
+}
+
+.office-info h3 {
+    margin-bottom: 0.1rem;  /* もしくは8px */
+}
+
+.office-info p {
+    margin-top: 0.1rem;  /* もしくは8px */
+}
+
+/* Opening Hours Styles */
+.opening-hours {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.opening-hours h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.hours-content {
+    margin-top: 0.5rem;
+}
+
+.hours-note {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    font-style: italic;
+}
+
+.hours-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.hours-item:last-child {
+    border-bottom: none;
+}
+
+.hours-item .day {
+    font-weight: 600;
+    font-size: 0.95rem;
+    flex: 0 0 40%;
+}
+
+.hours-item .time {
+    text-align: right;
+    font-size: 0.95rem;
+    flex: 1;
+}
+
+.hours-item .note {
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-left: 0.3rem;
+}
+
+/* PC Styles for Opening Hours */
+@media (min-width: 768px) {
+    .opening-hours {
+        max-width: 400px;
+    }
+    
+    .hours-grid {
+        gap: 1rem;
+    }
+    
+    .hours-item {
+        padding: 0.7rem 0;
+    }
+}
+
+/* Mobile Styles for Opening Hours */
+@media (max-width: 767px) {
+    .opening-hours {
+        margin-top: 1.5rem;
+        padding: 1rem 2rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .opening-hours h3 {
+        font-size: 1rem;
+    }
+    
+    .hours-item .day {
+        font-size: 0.9rem;
+    }
+    
+    .hours-item .time {
+        font-size: 0.9rem;
+    }
+    
+    .hours-item .note {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.2rem;
     }
 }
