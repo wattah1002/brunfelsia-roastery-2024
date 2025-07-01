@@ -1254,3 +1254,114 @@ form::after {
         margin-top: 0.2rem;
     }
 }
+
+/* Portfolio Section Styles */
+.portfolio-section {
+    padding: 5rem 2rem;
+    color: black;
+}
+
+.portfolio-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.portfolio-section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 3rem;
+}
+
+.portfolio-intro {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.portfolio-list {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-list h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.company-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.company-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.company-item:last-child {
+    border-bottom: none;
+}
+
+.portfolio-footer {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+/* PC Styles for Portfolio */
+@media (min-width: 768px) {
+    .portfolio-list {
+        margin: 2rem 0;
+    }
+}
+
+/* Mobile Styles for Portfolio */
+@media (max-width: 767px) {
+    .portfolio-section {
+        padding: 5rem 0 0 0;
+    }
+    
+    .portfolio-content {
+        padding: 0;
+    }
+    
+    .portfolio-section h2 {
+        font-size: 24px;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+    
+    .portfolio-intro,
+    .portfolio-footer {
+        text-align: left;
+    }
+    
+    .portfolio-list {
+        margin: 1.5rem 0;
+        padding: 1rem 2rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .portfolio-list h3 {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .company-item {
+        text-align: left;
+        font-size: 0.9rem;
+    }
+}
